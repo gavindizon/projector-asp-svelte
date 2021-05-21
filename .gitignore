@@ -142,3 +142,4 @@ node_modules/
 /projector-svelte/public/build/bundle.js.map
 /projector-svelte/public/build/bundle.css
 /projector-svelte/public/build/bundle.js
+/Projector.Web/global.json
