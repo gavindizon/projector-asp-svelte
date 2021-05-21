@@ -134,3 +134,11 @@ _NCrunch*
 
 # ignore node_modules
 node_modules/
+
+# ignore built files
+/Projector.Web/wwwroot/js-app/bundle.js.map
+/Projector.Web/wwwroot/js-app/bundle.css
+/Projector.Web/wwwroot/js-app/bundle.js
+/projector-svelte/public/build/bundle.js.map
+/projector-svelte/public/build/bundle.css
+/projector-svelte/public/build/bundle.js
