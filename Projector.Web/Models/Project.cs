@@ -15,15 +15,23 @@ namespace WebAPI.Models
         }
         [Key]
         public int id { get; set; }
+
         [StringLength(50)]
         [Required]
         public string code { get; set; }
+
         [Column(TypeName = "nvarchar(50)")]
         public string name { get; set; }
+
         [Column(TypeName = "nvarchar(MAX)")]
         public string remarks { get; set; }
+
         [Column(TypeName = "decimal(18,4)")]
         public decimal budget { get; set; }
+
+        //[Column(TypeName = "nvarxhar(128)")]
+        //[StringLength(128)]
+        //public string createdBy { get; set; }
 
      //   public virtual List<Person> AssignedPeople { get; set; }
     }

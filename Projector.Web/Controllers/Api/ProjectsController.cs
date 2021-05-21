@@ -1,15 +1,13 @@
-﻿using System;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
+using Projector.Core.Projects;
+using Projector.Web.Infrastruture;
 using System.Collections.Generic;
 using System.Linq;
 using System.Security.Claims;
-using System.Security.Principal;
 using System.Threading.Tasks;
-using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
 using WebAPI.Dtos;
-using WebAPI.Helpers;
 using WebAPI.Models;
 
 namespace WebAPI.Controllers
@@ -17,13 +15,16 @@ namespace WebAPI.Controllers
     [Area("Api")]
     [Route("[area]/[controller]")]
     [ApiController]
+    [Authorize]
     public class ProjectsController : ControllerBase
     {
         private readonly ProjectorDBContext _context;
+        private readonly ProjectService _projects;
 
         public ProjectsController(ProjectorDBContext context)
         {
             _context = context;
+            _projects = new Projector.Core.Projects.ProjectService(context);
         }
 
         // GET: api/Projects
@@ -129,32 +130,24 @@ namespace WebAPI.Controllers
         }
 
         // POST: api/Projects
-        // To protect from overposting attacks, enable the specific properties you want to bind to, for
-        // more details, see https://go.microsoft.com/fwlink/?linkid=2123754.
         [HttpPost]
-        public async Task<ActionResult<Project>> PostProject(Project project)
+        //[UserIdentityPropertySetterFilter]
+        public async Task<ActionResult<ProjectData>> PostProject(CreateProjectCommand args)
         {
-            try
+            // controllers have 3 responsibilities:
+            // 1) accept the request, validate it
+            // 2) locate the proper model to execute, execute, handle errors
+            // 3) return a response depending on the state of the model
+
+            if (this.ModelState.IsValid)
             {
-                var userid = ((ClaimsIdentity)User.Identity).FindFirst("Id").Value.ToString();
-                var user = _context.Persons.FirstOrDefault(p => p.id == int.Parse(userid));
-                var projectEntity = _context.Projects.Add(project);
+                args.createdBy = User.Identity.Name;
 
-                ProjectAssignment assignment = new ProjectAssignment
-                {
-                    Project = projectEntity.Entity,
-                    Person = user
-                };
-
-                _context.ProjectAssignments.Add(assignment);
-                await _context.SaveChangesAsync();
-
-                return CreatedAtAction("GetProject", new { id = project.id }, project);
+                return this.CreatedAtAction("GetMyProjects", _projects.CreateProject(args));
             }
-            catch (Exception _)
+            else
             {
-                return Unauthorized();
-
+                return this.BadRequest(this.ModelState);
             }
         }
  
