@@ -1,0 +1,136 @@
+﻿/* Please see documentation at https://docs.microsoft.com/aspnet/core/client-side/bundling-and-minification
+for details on configuring this project to bundle and minify static web assets. */
+
+a.navbar-brand {
+  white-space: normal;
+  text-align: center;
+  word-break: break-all;
+}
+
+/* Provide sufficient contrast against white background */
+a {
+  color: #0366d6;
+}
+
+
+.nav-pills .nav-link.active, .nav-pills .show > .nav-link {
+  color: #fff;
+  background-color: #1b6ec2;
+  border-color: #1861ac;
+}
+
+/* Sticky footer styles
+-------------------------------------------------- */
+html {
+  font-size: 14px;
+}
+@media (min-width: 768px) {
+  html {
+    font-size: 16px;
+  }
+}
+
+.border-top {
+  border-top: 1px solid #e5e5e5;
+}
+.border-bottom {
+  border-bottom: 1px solid #e5e5e5;
+}
+
+.box-shadow {
+  box-shadow: 0 .25rem .75rem rgba(0, 0, 0, .05);
+}
+
+button.accept-policy {
+  font-size: 1rem;
+  line-height: inherit;
+}
+
+/* Sticky footer styles
+-------------------------------------------------- */
+html {
+  min-height: 100%;
+}
+
+body {
+  /* Margin bottom by footer height */
+  margin-bottom: 60px;
+}
+.footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  white-space: nowrap;
+  line-height: 60px; /* Vertically center the text there */
+}
+
+nav {
+    background-color: #ff3e00;
+    height: 120px;
+    width: 100%;
+    padding: 0 3.2rem;
+    position: static;
+    left: 0;
+    top: 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 4.8rem;
+}
+
+
+ul {
+    list-style-type: none;
+    display: inline-block;
+}
+
+    ul li {
+        display: inline-block;
+        margin: 1.6rem;
+        text-transform: uppercase;
+    }
+
+        ul li a, a {
+            color: #Fff;
+            opacity: 0.8;
+            transition: all .4s;
+        }
+
+            ul li a:hover, a {
+                opacity: 1;
+            }
+
+
+h1 {
+    color: #FFF;
+    text-transform: uppercase;
+    font-size: 3rem;
+    font-weight: 100;
+}
+
+.form-login {
+    background-color: #FFF;
+    -webkit-box-shadow: 10px 10px 19px 2px rgba(0, 0, 0, 0.13);
+    -moz-box-shadow: 10px 10px 19px 2px rgba(0, 0, 0, 0.13);
+    box-shadow: 10px 10px 19px 2px rgba(0, 0, 0, 0.13);
+    border-radius: 6px;
+    width: 480px;
+    margin: 0 auto;
+    padding: 3.2rem 3.2rem 3.6rem;
+}
+
+h2 {
+    color: #ff3e00;
+    text-transform: uppercase;
+    font-size: 2.4rem;
+    font-weight: 400;
+    padding: 1.6rem 1.6rem 3.2rem;
+}
+
+.btn {
+    background-color: #ff3e00;
+    color: #FFF !important;
+    width: 100%;
+    display: block;
+
+}
