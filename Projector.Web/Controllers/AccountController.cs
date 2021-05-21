@@ -51,7 +51,7 @@ namespace Projector.Web.Controllers
             // setup clais
             var user = _context.Persons.FirstOrDefault(p => p.username == dto.username);
             if (user == null || user.password != dto.password)
-                return RedirectToRoute("App");
+                return RedirectToRoute("default");
 
             var claims = new List<Claim>
                 {
